@@ -1,31 +1,25 @@
 
-# SECOM FAULT PREDICTION ANALYSIS
+## SECOM FAULT PREDICTION ANALYSIS
 
 Fault Detection Using Machine Learning in Semiconductor Manufacturing.
 
-
-## Problem Statement
-
-
+### Problem Statement
 
 Semiconductor manufacturing processes involve hundreds of sensors generating high-dimensional data. Detecting faulty products early in the production pipeline is critical to avoid:
 
-Financial losses
-Product recalls
-Reduced manufacturing efficiency
+* Financial losses
+* Product recalls
+* Reduced manufacturing efficiency
 
 However, the dataset presents two major challenges:
+* High Dimensionality (590+ sensor features)  
+* Severe Class Imbalance (very few failure cases)
 
-High Dimensionality (590+ sensor features)  
-Severe Class Imbalance (very few failure cases)
-Small Sample
-
-The objective of this project is to:
-
-Build a machine learning model capable of accurately detecting failure cases (class = 1), prioritizing recall to minimize missed defects.
+The objective of this project is to:  
+Build a machine learning model capable of accurately detecting failure cases (class = 1).
 
 
-#### Key Challenges
+### Key Challenges
 Large number of missing values across features  
 Many low-variance and redundant features  
 Highly imbalanced target variable (104 failures out of 1,567 samples)
@@ -51,30 +45,30 @@ Small Sample size
 
 
 
-## Repository Structure
+### Repository Structure
 
 
-SECOM-Fault-Prediction-analysis/
-│
-├── data/
-│   ├── raw/                # Original dataset 
-│   └── processed/          # Cleaned dataset
-│
-├── notebooks/              
-│   └── Initial Analysis.ipynb  # EDA and initial analyis
-│   └── Optimised Modeling.ipynb  # Model Optimization 
-│
-├── requirements.txt
-│
-├── README.md
-│
-└── .gitignore
+SECOM-Fault-Prediction-analysis/  
+│  
+├──── data/  
+│       ├── raw/                # Original dataset  
+│       └── processed/          # Cleaned dataset  
+│  
+├──── notebooks/              
+│        └── Initial Analysis.ipynb  # EDA and initial analyis  
+│        └── Optimised Modeling.ipynb  # Model Optimization   
+│  
+├──── requirements.txt  
+│  
+├──── README.md  
+│  
+└──── .gitignore  
 
 
 
 
 
-## Approach
+### Approach
 
 1. Data Exploration and PreProcessing  
 * Removed features with excessive missing values
@@ -100,7 +94,7 @@ Recall (primary metric), Confusion Matrix, F1_Score, ROC-AUC and SHAP
 
 
 ### Key Assumptions
-A "Missed Failure" is significantly more costly than a "False Alarm".
+A "Missed Failure" is significantly more costly than a "False Alarm".  (Hence we prioritize recall to minimize missed defects).
 
 
 ### Key Findings
@@ -126,8 +120,6 @@ The following plots illustrates the behaciour of all 5 models. By lowering the d
 
 
 ### Final Results
-
-
 | Model | Recall (Failures Caught) | False Alarms | Verdict |
 | :--- | :--- | :--- | :--- |
 | **XGBoost** | 79.2% | 92 | Best balance of high detection with moderate inspection overhead. |
@@ -139,7 +131,6 @@ The following plots illustrates the behaciour of all 5 models. By lowering the d
 
 
 ### Conclusions
-
 No single sensor strongly determines failure. Correlation results suggests that failure is driven by complex interactions between multiple process variables rather than individual sensor readings.
 
 The failure of Logistic Regression (missing 46% of defects) proves that sensor failures are not caused by single-variable shifts. Instead, they are caused by complex interactions between multiple sensors. Therefore, ensemble methods (XGBoost, Random Forest) are mandatory for this dataset because they can "see" these non-linear relationships.
@@ -168,14 +159,6 @@ The XGBoost’s threshold of 0.047 is more robust and reliable for a real produc
 
 Chigozie Okonkwo  
 Machine Learning | Data Science | Predictive Systems
-
-
-
-
-
-
-
-
 
 
 
